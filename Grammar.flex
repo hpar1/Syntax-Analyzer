@@ -22,11 +22,13 @@ import java_cup.runtime.*;
 //     return -1; // handled by cup this time
 // %eofval}
 //%eofclose //close the input stream at end of file
+%type Symbol
+%eofclose
 
 %{
     // anything in between these brackets is copied exactly to the generated class
-    private Symbol symbol(int type){
-        return new Symbol(type, yyline, yycolumn);
+    private Symbol symbol(int sym){
+        return new Symbol(sym, yyline+1, yycolumn+1);
     }
 
 //     // stores the token as enums so that they have a # associated with them
@@ -238,7 +240,9 @@ Double = ([0-9])+ (".") ([0-9])* ({Exponent})?
 Exponent = (E|e) ("+"|"-")? ([0-9])+
 
 // print out all of the arrays in a special format
-String = \" ([^\n\"])* \" // can contain anything except newline or double quote
+
+String = \"([^\"\n])*\"
+// can contain anything except newline or double quote
 
 ID = [a-zA-Z] ([a-zA-Z]|[0-9]|"_")*
 
@@ -312,3 +316,4 @@ while {System.out.print(yytext()+" "); return symbol(sym._while);}
 "}" {System.out.print("rightbrace "); return symbol(sym._rightbrace);}
 
 . {} // ignore everything else
+<<EOF>> {return symbol(sym.EOF);}
