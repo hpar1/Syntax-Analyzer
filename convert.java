@@ -37,7 +37,7 @@ public class convert{
           }
         }
         else if(c[i] == 'S' && c[i + 1] == 'y' ){
-          res += "[reject]\n";
+          res += "\n[reject]\n";
           error = true;
           break;
         }
