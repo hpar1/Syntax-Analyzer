@@ -16,7 +16,7 @@ public class convert{
     String st;
     boolean error = false;
     String res = "";
-    while (( s = br.readLine()) != null &&){
+    while (( s = br.readLine()) != null){
       if(s.length == 0){
         break;
       }
