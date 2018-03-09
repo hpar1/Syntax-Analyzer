@@ -17,7 +17,7 @@ public class convert{
     boolean error = false;
     String res = "";
     while (( s = br.readLine()) != null){
-      if(s.length == 0){
+      if(s.length() == 0){
         break;
       }
       char[] c = (s).toCharArray();
