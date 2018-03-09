@@ -1,0 +1,8 @@
+1) Create parser.java and sym.java by:
+    a) java -jar java-cup-11b.jar SyntaxAnalyzer.cup
+2) Create Lexer.java by:
+    a) jflex Grammar.flex
+    or
+    b) java -jar JFlex.jar Grammar.flex
+3) Compile everything:
+    a) javac -classpath .\java-cup-11b-runtime.jar .\Lexer.java .\sym.java .\parser.java .\Driver.java
