@@ -9,7 +9,7 @@ public class convert{
     // We need to provide file path as the parameter:
     // double backquote is to avoid compiler interpret words
     // like \test as \t (ie. as a escape sequence)
-    File file = new File("test2.txt");
+    File file = new File(args[0]);
 
     BufferedReader br = new BufferedReader(new FileReader(file));
 
