@@ -33,11 +33,11 @@ public class convert{
           //System.out.println("Shift added" );
           res += "[shift]\n";
         }
-        else if(c[i + 1] == ' ' && c[i + 2] == 'E' ){
-          res += "[reject]\n";
-          error = true;
-          break;
-        }
+      }
+      else if(c[i] == 'S' && c[i + 1] == 'y' ){
+        res += "[reject]\n";
+        error = true;
+        break;
       }
       else {
         int j = 0;
