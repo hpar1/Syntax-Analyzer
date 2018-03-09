@@ -366,7 +366,7 @@ public class Lexer implements java_cup.runtime.Scanner {
   /* user code: */
     // anything in between these brackets is copied exactly to the generated class
     private Symbol symbol(int type){
-        return new Symbol(type, yyline, yycolumn);
+        return new Symbol(type, yyline+1, yycolumn+1);
     }
 
 //     // stores the token as enums so that they have a # associated with them
@@ -802,7 +802,7 @@ public class Lexer implements java_cup.runtime.Scanner {
    * @return      the next token
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
-  public java_cup.runtime.Symbol next_token() throws java.io.IOException {
+  public Symbol next_token() throws java.io.IOException {
     int zzInput;
     int zzAction;
 
@@ -939,7 +939,9 @@ public class Lexer implements java_cup.runtime.Scanner {
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
             zzDoEOF();
-          { return new java_cup.runtime.Symbol(sym.EOF); }
+              {
+                return symbol(sym.EOF);
+              }
       }
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
