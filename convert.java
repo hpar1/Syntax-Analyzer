@@ -17,38 +17,37 @@ public class convert{
     boolean error = false;
     String res = "";
     while (( s = br.readLine()) != null){
-      if(s.length() == 0){
-        break;
-      }
-      char[] c = (s).toCharArray();
+      if(s.length() != 0){
+        char[] c = (s).toCharArray();
 
-      int i = 0;
-      if(c[i] == '[' &&  c[i + 1] == 'r' && c[i + 2] == 'e'){
-        int j = 0;
-        while(c[i+j] != ']'){
-          //System.out.println(c[i+j] + " added" );
-          res += c[i+j];
-          j++;
+        int i = 0;
+        if(c[i] == '[' &&  c[i + 1] == 'r' && c[i + 2] == 'e'){
+          int j = 0;
+          while(c[i+j] != ']'){
+            //System.out.println(c[i+j] + " added" );
+            res += c[i+j];
+            j++;
+          }
+          res += "]";
         }
-        res += "]";
-      }
-      else if(c[i] == '#'){
-        if(c[i + 1] == ' ' && c[i + 2] == 'S' ){
-          //System.out.println("Shift added" );
-          res += "[shift]\n";
+        else if(c[i] == '#'){
+          if(c[i + 1] == ' ' && c[i + 2] == 'S' ){
+            //System.out.println("Shift added" );
+            res += "[shift]\n";
+          }
         }
-      }
-      else if(c[i] == 'S' && c[i + 1] == 'y' ){
-        res += "[reject]\n";
-        error = true;
-        break;
-      }
-      else {
-        int j = 0;
-        while(c[i+j] != ' ' ){
-          //System.out.println(c[i+j] + " added" );
-          res += c[i+j];
-          j++;
+        else if(c[i] == 'S' && c[i + 1] == 'y' ){
+          res += "[reject]\n";
+          error = true;
+          break;
+        }
+        else {
+          int j = 0;
+          while(c[i+j] != ' ' ){
+            //System.out.println(c[i+j] + " added" );
+            res += c[i+j];
+            j++;
+          }
         }
       }
     }
